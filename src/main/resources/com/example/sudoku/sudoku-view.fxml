@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0"  xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.controller.GameController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudoku.controller.GameController">
    <center>
-       <GridPane cache="true" cacheShape="false" centerShape="false" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" mouseTransparent="true" prefHeight="285.0" prefWidth="308.0" scaleShape="false" BorderPane.alignment="CENTER">
+       <GridPane cache="true" cacheShape="false" centerShape="false" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" mouseTransparent="false" prefHeight="285.0" prefWidth="308.0" scaleShape="false" BorderPane.alignment="CENTER">
            <columnConstraints>
                <ColumnConstraints hgrow="SOMETIMES" prefWidth="100.0" />
                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,42 +33,150 @@
            <BorderPane.margin>
                <Insets />
            </BorderPane.margin>
-           <TextField fx:id="caja00" alignment="CENTER" onAction="#onclick" prefHeight="50.0" prefWidth="51.0" />
-           <TextField fx:id="caja01" onAction="#onclick" prefHeight="55.0" prefWidth="51.0" GridPane.columnIndex="1" />
-           <TextField fx:id="caja02" onAction="#onclick" prefHeight="66.0" prefWidth="51.0" GridPane.columnIndex="2" />
-           <TextField fx:id="caja03" onAction="#onclick" prefHeight="55.0" prefWidth="51.0" GridPane.columnIndex="3" />
-           <TextField fx:id="caja04" onAction="#onclick" prefHeight="55.0" prefWidth="51.0" GridPane.columnIndex="4" />
-           <TextField fx:id="caja05" onAction="#onclick" prefHeight="51.0" prefWidth="52.0" GridPane.columnIndex="5" />
-           <TextField fx:id="caja10" onAction="#onclick" prefHeight="49.0" prefWidth="51.0" GridPane.rowIndex="1" />
-           <TextField fx:id="caja11" onAction="#onclick" prefHeight="46.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-           <TextField fx:id="caja12" onAction="#onclick" prefHeight="65.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-           <TextField fx:id="caja13" onAction="#onclick" prefHeight="66.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-           <TextField fx:id="caja14" onAction="#onclick" prefHeight="68.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-           <TextField fx:id="caja15" onAction="#onclick" prefHeight="52.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-           <TextField fx:id="caja20" onAction="#onclick" prefHeight="73.0" prefWidth="51.0" GridPane.rowIndex="2" />
-           <TextField fx:id="caja21" onAction="#onclick" prefHeight="62.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-           <TextField fx:id="caja22" onAction="#onclick" prefHeight="65.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-           <TextField fx:id="caja23" onAction="#onclick" prefHeight="54.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-           <TextField fx:id="caja24" onAction="#onclick" prefHeight="50.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-           <TextField fx:id="caja25" onAction="#onclick" prefHeight="59.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-           <TextField fx:id="caja30" onAction="#onclick" prefHeight="51.0" prefWidth="51.0" GridPane.rowIndex="3" />
-           <TextField fx:id="caja31" onAction="#onclick" prefHeight="61.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-           <TextField fx:id="caja32" onAction="#onclick" prefHeight="57.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-           <TextField fx:id="caja33" onAction="#onclick" prefHeight="54.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-           <TextField fx:id="caja34" onAction="#onclick" prefHeight="66.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-           <TextField fx:id="caja35" onAction="#onclick" prefHeight="60.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-           <TextField fx:id="caja40" onAction="#onclick" prefHeight="73.0" prefWidth="51.0" GridPane.rowIndex="4" />
-           <TextField fx:id="caja41" onAction="#onclick" prefHeight="80.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-           <TextField fx:id="caja42" onAction="#onclick" prefHeight="63.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-           <TextField fx:id="caja43" onAction="#onclick" prefHeight="57.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-           <TextField fx:id="caja44" onAction="#onclick" prefHeight="58.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-           <TextField fx:id="caja45" onAction="#onclick" prefHeight="54.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-           <TextField fx:id="caja50" onAction="#onclick" prefHeight="67.0" prefWidth="51.0" GridPane.rowIndex="5" />
-           <TextField fx:id="caja51" onAction="#onclick" prefHeight="63.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-           <TextField fx:id="caja52" onAction="#onclick" prefHeight="70.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-           <TextField fx:id="caja53" onAction="#onclick" prefHeight="69.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-           <TextField fx:id="caja54" onAction="#onclick" prefHeight="69.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-           <TextField fx:id="caja55" onAction="#onclick" prefHeight="78.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+           <TextField fx:id="caja00" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="58.0" prefWidth="51.0">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja01" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="61.0" prefWidth="51.0" GridPane.columnIndex="1">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja02" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="66.0" prefWidth="51.0" GridPane.columnIndex="2">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja03" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="55.0" prefWidth="51.0" GridPane.columnIndex="3">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja04" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="55.0" prefWidth="51.0" GridPane.columnIndex="4">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja05" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="51.0" prefWidth="52.0" GridPane.columnIndex="5">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja10" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="49.0" prefWidth="51.0" GridPane.rowIndex="1">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja11" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="46.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja12" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="65.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja13" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="66.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja14" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="68.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja15" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="52.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja20" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="73.0" prefWidth="51.0" GridPane.rowIndex="2">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja21" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="62.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja22" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="65.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja23" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="54.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja24" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="50.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja25" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="59.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja30" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="51.0" prefWidth="51.0" GridPane.rowIndex="3">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja31" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="61.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja32" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="57.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja33" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="54.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja34" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="66.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja35" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="60.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja40" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="73.0" prefWidth="51.0" GridPane.rowIndex="4">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja41" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="80.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja42" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="63.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja43" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="57.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja44" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="58.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja45" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="54.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja50" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="67.0" prefWidth="51.0" GridPane.rowIndex="5">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja51" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="63.0" prefWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja52" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="70.0" prefWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja53" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="69.0" prefWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja54" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="69.0" prefWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
+           <TextField fx:id="caja55" alignment="CENTER" onAction="#onclick" onMouseClicked="#clickcelda" onMouseExited="#cursorfuera" onMouseMoved="#cursorsobre" prefHeight="78.0" prefWidth="52.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
+            <font>
+               <Font size="19.0" />
+            </font></TextField>
        </GridPane>
    </center>
    <top>
@@ -86,12 +194,12 @@
            <padding>
                <Insets bottom="10.0" />
            </padding>
-           <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Iniciar juego">
+           <Button fx:id="btniniciar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#iniciarjuego" text="Iniciar juego">
               <VBox.margin>
                   <Insets bottom="10.0" />
               </VBox.margin>
            </Button>
-           <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Ayuda" />
+           <Button fx:id="btnayuda" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#ayuda" text="Ayuda" />
        </VBox>
    </right>
 </BorderPane>

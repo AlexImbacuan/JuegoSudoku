@@ -1,184 +1,130 @@
 package com.example.sudoku.controller;
 
-import com.example.sudoku.model.Game;
+import com.example.sudoku.model.GameModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.util.converter.IntegerStringConverter;
+import javafx.scene.control.TextFormatter;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.function.UnaryOperator;
 
 public class GameController {
 
-    private TextField[][] cajas = new TextField[6][6];
     @FXML
     private Label welcomeText;
-    @FXML
-    private TextField caja00;
 
     @FXML
-    private TextField caja01;
+    private TextField caja00, caja01, caja02, caja03, caja04, caja05;
+    @FXML
+    private TextField caja10, caja11, caja12, caja13, caja14, caja15;
+    @FXML
+    private TextField caja20, caja21, caja22, caja23, caja24, caja25;
+    @FXML
+    private TextField caja30, caja31, caja32, caja33, caja34, caja35;
+    @FXML
+    private TextField caja40, caja41, caja42, caja43, caja44, caja45;
+    @FXML
+    private TextField caja50, caja51, caja52, caja53, caja54, caja55;
+
+    private GameModel juego;
+    private GridPane grid;
+    private Pane gridContainer;
+    private TextField[][] cajas;
+
+    public GameController() {
+        this.juego = new GameModel();
+        this.grid = new GridPane();
+        this.gridContainer = new Pane();
+        this.cajas = new TextField[6][6];
+    }
 
     @FXML
-    private TextField caja02;
+    public void initialize() {
+        // Inicializar el array de cajas
+        cajas[0][0] = caja00; cajas[0][1] = caja01; cajas[0][2] = caja02; cajas[0][3] = caja03; cajas[0][4] = caja04; cajas[0][5] = caja05;
+        cajas[1][0] = caja10; cajas[1][1] = caja11; cajas[1][2] = caja12; cajas[1][3] = caja13; cajas[1][4] = caja14; cajas[1][5] = caja15;
+        cajas[2][0] = caja20; cajas[2][1] = caja21; cajas[2][2] = caja22; cajas[2][3] = caja23; cajas[2][4] = caja24; cajas[2][5] = caja25;
+        cajas[3][0] = caja30; cajas[3][1] = caja31; cajas[3][2] = caja32; cajas[3][3] = caja33; cajas[3][4] = caja34; cajas[3][5] = caja35;
+        cajas[4][0] = caja40; cajas[4][1] = caja41; cajas[4][2] = caja42; cajas[4][3] = caja43; cajas[4][4] = caja44; cajas[4][5] = caja45;
+        cajas[5][0] = caja50; cajas[5][1] = caja51; cajas[5][2] = caja52; cajas[5][3] = caja53; cajas[5][4] = caja54; cajas[5][5] = caja55;
 
-    @FXML
-    private TextField caja03;
+        // Aplicar formato y filtros
+        configurarTextFields();
+    }
 
-    @FXML
-    private TextField caja04;
+    public void configurarTextFields() {
+        // Crear un filtro para limitar la entrada a solo un dígito (1-9)
+        UnaryOperator<TextFormatter.Change> digitFilter = change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("[1-9]?")) { // Permite solo un dígito (1-9)
+                return change;
+            }
+            return null; // Bloquea cualquier otro cambio
+        };
 
-    @FXML
-    private TextField caja05;
+        for (TextField[] row : cajas) {
+            for (TextField textField : row) {
+                // Aplicar el filtro a cada TextField
+                textField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), null, digitFilter));
+                textField.setStyle("-fx-background-color: lightgray;"); // Color por defecto
 
-    @FXML
-    private TextField caja10;
+                // Comportamiento de cursor
+                textField.setOnMouseEntered(this::cursorsobre);
+                textField.setOnMouseExited(this::cursorfuera);
+            }
+        }
+    }
 
-    @FXML
-    private TextField caja11;
+    // Método para validar la entrada del TextField al hacer clic
+    public void validarEntrada(MouseEvent event) {
+        TextField textField = (TextField) event.getSource();
+        String valor = textField.getText();
 
-    @FXML
-    private TextField caja12;
-
-    @FXML
-    private TextField caja13;
-
-    @FXML
-    private TextField caja14;
-
-    @FXML
-    private TextField caja15;
-
-    @FXML
-    private TextField caja20;
-
-    @FXML
-    private TextField caja21;
-
-    @FXML
-    private TextField caja22;
-
-    @FXML
-    private TextField caja23;
-
-    @FXML
-    private TextField caja24;
-
-    @FXML
-    private TextField caja25;
-
-    @FXML
-    private TextField caja30;
-
-    @FXML
-    private TextField caja31;
-
-    @FXML
-    private TextField caja32;
-
-    @FXML
-    private TextField caja33;
-
-    @FXML
-    private TextField caja34;
-
-    @FXML
-    private TextField caja35;
-
-    @FXML
-    private TextField caja40;
-
-    @FXML
-    private TextField caja41;
-
-    @FXML
-    private TextField caja42;
-
-    @FXML
-    private TextField caja43;
-
-    @FXML
-    private TextField caja44;
-
-    @FXML
-    private TextField caja45;
-
-    @FXML
-    private TextField caja50;
-
-    @FXML
-    private TextField caja51;
-
-    @FXML
-    private TextField caja52;
-
-    @FXML
-    private TextField caja53;
-
-    @FXML
-    private TextField caja54;
-
-    @FXML
-    private TextField caja55;
-
-    Game juego;
+        // Comprobar si el valor es un dígito válido
+        if (!valor.matches("[1-9]")) {
+            textField.clear();
+        }
+    }
 
     @FXML
     void onclick(ActionEvent event) {
-
-    }
-    public GameController() {
-        cajas[0][0] = caja00;
-        cajas[0][1] = caja01;
-        cajas[0][2] = caja02;
-        cajas[0][3] = caja03;
-        cajas[0][4] = caja04;
-        cajas[0][5] = caja05;
-
-        cajas[1][0] = caja10;
-        cajas[1][1] = caja11;
-        cajas[1][2] = caja12;
-        cajas[1][3] = caja13;
-        cajas[1][4] = caja14;
-        cajas[1][5] = caja15;
-
-        cajas[2][0] = caja20;
-        cajas[2][1] = caja21;
-        cajas[2][2] = caja22;
-        cajas[2][3] = caja23;
-        cajas[2][4] = caja24;
-        cajas[2][5] = caja25;
-
-        cajas[3][0] = caja30;
-        cajas[3][1] = caja31;
-        cajas[3][2] = caja32;
-        cajas[3][3] = caja33;
-        cajas[3][4] = caja34;
-        cajas[3][5] = caja35;
-
-        cajas[4][0] = caja40;
-        cajas[4][1] = caja41;
-        cajas[4][2] = caja42;
-        cajas[4][3] = caja43;
-        cajas[4][4] = caja44;
-        cajas[4][5] = caja45;
-
-        cajas[5][0] = caja50;
-        cajas[5][1] = caja51;
-        cajas[5][2] = caja52;
-        cajas[5][3] = caja53;
-        cajas[5][4] = caja54;
-        cajas[5][5] = caja55;
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                String valor = cajas[i][j].getText();
+                if (valor.matches("[1-9]")) { // Solo un dígito válido entre 1 y 9
+                    System.out.println("Valor válido en caja[" + i + "][" + j + "]: " + valor);
+                } else {
+                    System.out.println("Error: Valor no válido en caja[" + i + "][" + j + "]: " + valor);
+                }
+            }
+        }
     }
 
-    public void botonreiniciar(ActionEvent actionEvent) {
+    public void botonreiniciar(ActionEvent actionEvent) {}
+    public void botonayuda(ActionEvent actionEvent) {}
+    public void botonvalidar(ActionEvent actionEvent) {}
+    public void iniciarjuego(ActionEvent actionEvent) {}
+    public void ayuda(ActionEvent actionEvent) {}
+
+    @FXML
+    public void cursorsobre(@NotNull MouseEvent mouseEvent) {
+        TextField textField = (TextField) mouseEvent.getSource();
+        textField.setStyle("-fx-background-color: yellow;");
     }
 
-    public void botonayuda(ActionEvent actionEvent) {
-
+    @FXML
+    public void cursorfuera(@NotNull MouseEvent mouseEvent) {
+        TextField textField = (TextField) mouseEvent.getSource();
+        textField.setStyle("-fx-background-color: lightgray;");
     }
 
-
-
-    public void botonvalidar(ActionEvent actionEvent) {
+    public void clickcelda(MouseEvent mouseEvent) {
 
     }
 }
