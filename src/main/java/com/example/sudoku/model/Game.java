@@ -13,6 +13,7 @@ public class Game {
     private ArrayList<ArrayList<Integer>> bloque2;
     private ArrayList<ArrayList<Integer>> bloque3;
     private ArrayList<ArrayList<Integer>> bloque4;
+
     private ArrayList<ArrayList<Integer>> bloque5;
     private ArrayList<ArrayList<Integer>> bloque6;
 

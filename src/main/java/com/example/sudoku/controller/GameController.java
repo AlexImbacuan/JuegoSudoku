@@ -1,5 +1,6 @@
 package com.example.sudoku.controller;
 
+import com.example.sudoku.model.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -118,6 +119,8 @@ public class GameController {
     @FXML
     private TextField caja55;
 
+    Game juego;
+
     @FXML
     void onclick(ActionEvent event) {
 
@@ -173,8 +176,7 @@ public class GameController {
 
     }
 
-    public void botonresolver(ActionEvent actionEvent) {
-    }
+
 
     public void botonvalidar(ActionEvent actionEvent) {
 
