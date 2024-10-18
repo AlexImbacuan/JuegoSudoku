@@ -12,27 +12,33 @@ public class GameStage extends Stage {
     private GameController gameController;
 
     public GameStage() throws IOException {
+        // Asegúrate de que la ruta del FXML sea correcta
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sudoku/sudoku-view.fxml"));
         Parent root = loader.load();
         gameController = loader.getController();
         Scene scene = new Scene(root);
-        setTitle("Juego de Craps");
+        setTitle("Nivel Dios");
         setResizable(false);
         setScene(scene);
         show();
     }
 
-    public GameController getGameController(){
+    public GameController getGameController() {
         return gameController;
     }
 
-    public static GameStage getInstance() throws IOException{
-        return GameStageHolder.INSTANCE = new GameStage();
+    public static GameStage getInstance() throws IOException {
+        if (GameStageHolder.INSTANCE == null) {
+            GameStageHolder.INSTANCE = new GameStage();
+        }
+        return GameStageHolder.INSTANCE;
     }
 
     public static void deleteInstance() {
-        GameStageHolder.INSTANCE.close();
-        GameStageHolder.INSTANCE = null;
+        if (GameStageHolder.INSTANCE != null) {
+            GameStageHolder.INSTANCE.close();
+            GameStageHolder.INSTANCE = null;
+        }
     }
 
     private static class GameStageHolder {
