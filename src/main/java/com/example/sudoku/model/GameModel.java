@@ -89,9 +89,6 @@ public class GameModel {
 
 
 
-        // Llamar al método para seleccionar un Sudoku aleatorio una vez
-
-
     }
 
     /*public void selectRandomSudoku() {
@@ -134,42 +131,42 @@ public class GameModel {
     }*/
 
     public void llenarBloques() {
-        // Llenar bloque 1 (filas 0-1, columnas 0-2)
+        // Llenar bloque 1
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {
                 bloque1[i][j] = sudoku5[i][j];
             }
         }
 
-        // Llenar bloque 2 (filas 0-1, columnas 3-5)
+        // Llenar bloque 2
         for (int i = 0; i < 2; i++) {
             for (int j = 3; j < 6; j++) {
                 bloque2[i][j - 3] = sudoku5[i][j];
             }
         }
 
-        // Llenar bloque 3 (filas 2-3, columnas 0-2)
+        // Llenar bloque 3
         for (int i = 2; i < 4; i++) {
             for (int j = 0; j < 3; j++) {
                 bloque3[i - 2][j] = sudoku5[i][j];
             }
         }
 
-        // Llenar bloque 4 (filas 2-3, columnas 3-5)
+        // Llenar bloque 4
         for (int i = 2; i < 4; i++) {
             for (int j = 3; j < 6; j++) {
                 bloque4[i - 2][j - 3] = sudoku5[i][j];
             }
         }
 
-        // Llenar bloque 5 (filas 4-5, columnas 0-2)
+        // Llenar bloque 5
         for (int i = 4; i < 6; i++) {
             for (int j = 0; j < 3; j++) {
                 bloque5[i - 4][j] = sudoku5[i][j];
             }
         }
 
-        // Llenar bloque 6 (filas 4-5, columnas 3-5)
+        // Llenar bloque 6
         for (int i = 4; i < 6; i++) {
             for (int j = 3; j < 6; j++) {
                 bloque6[i - 4][j - 3] = sudoku5[i][j];
@@ -243,21 +240,21 @@ public class GameModel {
     public boolean verificacionFila(int fila, int columna, int dato) {
         controlador = new GameController();
         for (int i = 0; i < 6; i++) {
-            String valorCaja = String.valueOf(controlador.getCaja(fila, i)); // Obtener el valor de la caja en la fila
+            String valorCaja = String.valueOf(controlador.getCaja(fila, i)); // Obtener valor
             if (!valorCaja.isEmpty()) { // Si la caja no está vacía
-                int valor = Integer.parseInt(valorCaja); // Convertir el valor a int
+                int valor = Integer.parseInt(valorCaja); // Convertir el valor en entero
                 if (valor == dato) {
-                    return false; // Si el número ya está en la fila, no es válido
+                    return false; // si no esta en la fila
                 }
             }
         }
-        return true; // Si no se repite, es válido
+        return true;
     }
 
     public boolean verificacionColumna(int fila, int columna, int dato) {
         controlador = new GameController();
         for (int i = 0; i < 6; i++) {
-            String valorCaja = String.valueOf(controlador.getCaja(i, columna)); // Obtener el valor de la caja en la columna
+            String valorCaja = String.valueOf(controlador.getCaja(i, columna)); // Obtener el valor
             if (!valorCaja.isEmpty()) { // Si la caja no está vacía
                 int valor = Integer.parseInt(valorCaja); // Convertir el valor a int
                 if (valor == dato) {
@@ -265,7 +262,7 @@ public class GameModel {
                 }
             }
         }
-        return true; // Si no se repite, es válido
+        return true;
     }
 
     public boolean verificacionBloque(int fila, int columna, int dato) {
@@ -294,9 +291,6 @@ public class GameModel {
         return sudoku5;
     }
 
-    public ArrayList<int[][]> getSudokuInicial() {
-        return sudokuInicial;
-    }
     public int[][] getbloque(int opc){
 
         switch (opc){

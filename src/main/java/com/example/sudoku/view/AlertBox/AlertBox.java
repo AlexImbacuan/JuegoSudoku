@@ -14,8 +14,4 @@ public class AlertBox implements IAlertBox {
 
     }
 
-    @Override
-    public void mostrarAdvertencia() {
-
-    }
 }
