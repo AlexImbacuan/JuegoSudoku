@@ -13,4 +13,9 @@ public class AlertBox implements IAlertBox {
         alert.showAndWait();
 
     }
+
+    @Override
+    public void mostrarAdvertencia() {
+
+    }
 }
