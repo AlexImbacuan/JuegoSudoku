@@ -4,6 +4,7 @@ module com.example.sudoku {
 
     requires org.controlsfx.controls;
     requires org.jetbrains.annotations;
+    requires java.desktop;
 
     opens com.example.sudoku to javafx.fxml;
     exports com.example.sudoku;

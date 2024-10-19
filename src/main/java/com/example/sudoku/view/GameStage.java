@@ -9,10 +9,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GameStage extends Stage {
-    private GameController gameController;
+    private final GameController gameController;
 
     public GameStage() throws IOException {
-        // Asegúrate de que la ruta del FXML sea correcta
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sudoku/sudoku-view.fxml"));
         Parent root = loader.load();
         gameController = loader.getController();
