@@ -12,7 +12,6 @@ import javafx.scene.control.TextFormatter;
 import org.jetbrains.annotations.NotNull;
 
 
-import javax.swing.*;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.function.UnaryOperator;
@@ -96,15 +95,15 @@ public class GameController {
     }
 
     public void configurarTextFields() {
-        // Crear un filtro para limitar la entrada a solo un dígito (1-9)
+        // limitar entrada 1-6
         UnaryOperator<TextFormatter.Change> digitFilter = change -> {
             String newText = change.getControlNewText();
-            if (newText.matches("[1-6]?")) { // Permite solo un dígito (1-9)
+            if (newText.matches("[1-6]?")) { // solo 6 numeros
                 return change;
             }
             return null; // Bloquea cualquier otro cambio
         };
-
+        //recorrer los textfiel
         for (TextField[] row : cajas) {
             for (TextField textField : row) {
                 // Aplicar el filtro a cada TextField
@@ -122,38 +121,31 @@ public class GameController {
     public void iniciarjuego(ActionEvent actionEvent) {
         llenarsudoku();
 
-        btniniciar.setVisible(false); // Esto hace que el botón desaparezca.
+        btniniciar.setVisible(false); // desaparecer boton
 
     }
 
     public void ayuda(ActionEvent actionEvent){
-        for (int fila = 0; fila < 6; fila++) {
-            for (int columna = 0; columna < 6; columna++) {
-                TextField textField = cajas[fila][columna];
+        int[][] sudoku5 = juego.getSudokuInicio();
+        for (int bloqueFila = 0; bloqueFila < 2; bloqueFila++) { // Para los bloques en las filas
+            for (int bloqueCol = 0; bloqueCol < 3; bloqueCol++) { // Para los bloques en las columnas
+                // Generar una posición aleatoria dentro del bloque 2x3
+                int posFila = bloqueFila * 2 + (int) (Math.random() * 2);
+                int posCol = bloqueCol * 3 + (int) (Math.random() * 3);
 
-                // Si la celda está vacía
-                if (textField.getText().isEmpty()) {
-                    Random random = new Random();
-                    int numero;
-
-                    // Intentar generar un número válido para esa posición
-                    do {
-                        numero = random.nextInt(6) + 1; // Generar número entre 1 y 6
-                    } while (!juego.verificacionFila(fila, columna, numero) ||
-                            !juego.verificacionColumna(fila, columna, numero) ||
-                            !juego.verificacionBloque(fila, columna, numero));
-
-                    // Asignar el número válido a la celda
-                    textField.setText(String.valueOf(numero));
-
-                    // Salir del método después de rellenar la primera celda vacía
-                    return;
+                // Verificar que no esté vacío antes de llenar
+                TextField text = obtenerTextField(posFila, posCol);
+                if (text.getText().isEmpty()) {
+                    // Asignar el valor del bloque correspondiente de sudoku5
+                    text.setText(String.valueOf(sudoku5[posFila][posCol]));
                 }
             }
         }
 
-        // Si no se encontraron celdas vacías
+    }
 
+    private TextField obtenerTextField(int fila, int columna) {
+        return this.cajas[fila][columna];
     }
 
 
@@ -305,7 +297,7 @@ public class GameController {
             } catch(NumberFormatException e){
                 pintarTextField(cajas[fila][columna], false); // Si no es un número, pinta de rojo
             } catch(ArrayIndexOutOfBoundsException e){
-                System.err.println("Índice fuera de límites: " + e.getMessage());
+            System.err.println("indice fuera de límites: " + e.getMessage());
                 pintarTextField(cajas[fila][columna], false); // Manejo adicional si es necesario
             } catch(NullPointerException e){
                 System.err.println("Referencia nula: " + e.getMessage());
