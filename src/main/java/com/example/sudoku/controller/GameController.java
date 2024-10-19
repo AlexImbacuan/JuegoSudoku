@@ -12,6 +12,7 @@ import javafx.util.converter.IntegerStringConverter;
 import javafx.scene.control.TextFormatter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Random;
 import java.util.function.UnaryOperator;
 
 public class GameController {
@@ -106,10 +107,14 @@ public class GameController {
         }
     }
 
-    public void botonreiniciar(ActionEvent actionEvent) {}
+    public void botonreiniciar(ActionEvent actionEvent) {
+
+    }
     public void botonayuda(ActionEvent actionEvent) {}
     public void botonvalidar(ActionEvent actionEvent) {}
-    public void iniciarjuego(ActionEvent actionEvent) {}
+    public void iniciarjuego(ActionEvent actionEvent) {
+        llenarsudoku();
+    }
     public void ayuda(ActionEvent actionEvent) {}
 
     @FXML
@@ -125,6 +130,39 @@ public class GameController {
     }
 
     public void clickcelda(MouseEvent mouseEvent) {
-
     }
+    public void llenarsudoku() {
+        Random random = new Random();
+        boolean[] numerosUsados = new boolean[7]; // Para los números del 1 al 6 (índices 1 a 6)
+
+        for (int bloque = 0; bloque < 6; bloque++) {
+            int contadorF = (bloque / 2) * 2; // Filas (0, 2, 4)
+            int contadorC = (bloque % 2) * 3; // Columnas (0, 3)
+
+            // Rellenar celdas aleatorias dentro del bloque
+            for (int i = 0; i < 2; i++) { // Cambia 2 por el número de celdas que deseas llenar
+                int fila, columna;
+                int numerobloque = 0;
+
+
+                ;
+                int numerousado=0;
+                do {
+                    fila = random.nextInt(2) + contadorF; // Seleccionar fila aleatoria
+                    columna = random.nextInt(3) + contadorC; // Seleccionar columna aleatoria
+
+                    // Obtener el número del bloque
+                    int[][] bloqueExtraido = juego.getbloque(bloque + 1);
+                    numerobloque = bloqueExtraido[fila - contadorF][columna - contadorC];
+
+                } while (numerousado != 0 && numerosUsados[numerobloque]); // Repetir si el número ya fue usado
+
+                // Establecer el número en el TextField
+                cajas[fila][columna].setText(String.valueOf(numerobloque));
+                numerosUsados[numerobloque] = true; // Marcar el número como usado
+            }
+        }
+    }
+
+
 }
